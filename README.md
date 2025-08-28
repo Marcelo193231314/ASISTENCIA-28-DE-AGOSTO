@@ -1,2 +1,5 @@
 # ASISTENCIA-28-DE-AGOSTO
 EJERCICOS 28 
+
+
+Y las clases?
