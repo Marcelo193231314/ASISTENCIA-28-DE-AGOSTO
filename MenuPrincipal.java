@@ -4,8 +4,8 @@ public class MenuPrincipal {
     private CalculadoraRecursiva calculadora;
     private Scanner scanner;
 
-    public MenuPrincipal(CalculadoraRecursiva calculadora) {
-        this.calculadora = calculadora;
+    public MenuPrincipal() {
+        this.calculadora = new CalculadoraRecursiva();
         this.scanner = new Scanner(System.in);
     }
 
@@ -20,7 +20,8 @@ public class MenuPrincipal {
         System.out.println("2. Fibonacci");
         System.out.println("3. Suma de Dígitos");
         System.out.println("4. Inversión de Cadena");
-        System.out.println("5. Salir");
+        System.out.println("5. Contar Vocales");
+        System.out.println("6. Salir");
         System.out.print("Seleccione una opción: ");
     }
 
@@ -41,7 +42,11 @@ public class MenuPrincipal {
                 menuInversionCadena();
                 break;
             case 5:
+                menuContarVocales();
+                break;
+            case 6:
                 System.out.println("Saliendo del programa...");
+                scanner.close();
                 return;
             default:
                 System.out.println("Opción no válida");
@@ -106,9 +111,30 @@ public class MenuPrincipal {
         }
     }
 
+    private void menuContarVocales() {
+        System.out.println("\n--- CONTAR VOCALES ---");
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Ingrese una cadena de texto: ");
+        String cadena = scanner.nextLine();
+
+        if (cadena != null) {
+            int resultado = calculadora.contarVocales(cadena);
+            System.out.println("Cadena: " + cadena);
+            System.out.println("Número de vocales: " + resultado);
+        } else {
+            System.out.println("Error: La cadena no puede ser nula");
+        }
+    }
+
     private void pausar() {
         System.out.println("Presione Enter para continuar...");
         scanner.nextLine();
         scanner.nextLine();
+    }
+
+
+    public static void main(String[] args) {
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.ejecutar();
     }
 }
